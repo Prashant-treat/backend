@@ -7,7 +7,7 @@ This is my repo for learning Backend
 
 
 ### notes
-
+# part 1
 * git normaly does not allow to track the empty folder since 
 it is not have any data but to so we can create a '.gitkee file
  so that we track and push the empyt empty folder which is use later in time. 
@@ -40,4 +40,22 @@ it is not have any data but to so we can create a '.gitkee file
      ''npm i -D prettier''
 * configure prettier file 
 
+# part 2
+* step mongodb altas for cloud mongodb solution by mongdb 
+  - login , create clustor database access , network acces , goto clustor press connect ,choose collection
+  - option  , copy url/uri and done 
+  - paste in MONGO_URI variable in .enb
+
+* now connect database with backend
+  type 1 in main index.js file
+  type 2 in db file (clean and more structure code)
+
+'database is always in another continent means there might possibly of connect fails or takes time for request'
+  - always use try/catch or promise (connect check)
+  - use async/await for response
+
+import dotenv need speacial config in index and in pkg.json
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },
                
