@@ -32,5 +32,12 @@ it is not have any data but to so we can create a '.gitkee file
 - after write this in pkg.json file to specify which file run .
 ``` "scripts": {
     "dev": "nodemon src/index.js"
-  },```
+  },
+  ```
+
+* create file controller db middleware models routes in src
+* install prettiesr as dev dependency
+     ''npm i -D prettier''
+* configure prettier file 
+
                
