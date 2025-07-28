@@ -58,4 +58,11 @@ import dotenv need speacial config in index and in pkg.json
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
-               
+        
+  # part 3      
+  * while using middleware route cors use" app.use"
+  * write util for professional code
+  *  using utils in convience 
+  - install mongoose aggregate pilepline- v2 
+  - install bcrpyt or bcrypt.js
+  - install JWT
