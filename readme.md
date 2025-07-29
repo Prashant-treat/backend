@@ -66,3 +66,13 @@ import dotenv need speacial config in index and in pkg.json
   - install mongoose aggregate pilepline- v2 
   - install bcrpyt or bcrypt.js
   - install JWT
+  * use cloundinary and fs to upload file.
+
+
+  # part 4
+
+  create routes and controllers 
+  run the server \
+
+  # part 5 
+  test the api using postman(app/extension) or you can use thunderclient 
