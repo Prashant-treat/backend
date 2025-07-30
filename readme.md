@@ -75,4 +75,8 @@ import dotenv need speacial config in index and in pkg.json
   run the server \
 
   # part 5 
-  test the api using postman(app/extension) or you can use thunderclient 
+  - test the api using postman(app/extension) or you can use thunderclient 
+
+  - selecte body option then select post data : rww and json
+
+ - send the request
