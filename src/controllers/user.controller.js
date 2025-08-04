@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
-import { User } from "../models/user.model.js";
+import { User } from "../models/user.models.js";
 import { uploadCloudinary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/Apiresponse.js";
 
@@ -16,11 +16,16 @@ const registerUser = asyncHandler(async (req, res) => {
     // return res
 
     const { fullname, email, username, password } = req.body;
-    console.log("email:", email);
+
+    // console.log("email:", email);
+    // console.log("fullname:", fullname);
+    // console.log("username:", username);
+    // console.log("password:", password);
 
     // if(fullname ===""){
     //     throw new ApiError(400,"fullname is required")
     // }
+
     if (
         [fullname, email, username, password].some(
             (field) => field?.trim() === ""
@@ -29,7 +34,8 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "all fields are required");
     }
 
-    const existedUser = User.findOne({
+
+    const existedUser = await User.findOne({
         $or: [{ email }, { username }],
     });
     if (existedUser) {
@@ -37,7 +43,12 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+    let coverImageLocalPath;
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
 
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is required");
@@ -50,7 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Avatar file is required");
     }
 
-    User.create({
+   const  user = await User.create({
         fullname,
         avatar: avatar.url,
         coverImage: coverImage?.url || "",
@@ -59,7 +70,7 @@ const registerUser = asyncHandler(async (req, res) => {
         username: username.toLowerCase(),
     });
 
-    const createdUser = await User.findBy(user._id).select(
+    const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"
     );
 
@@ -78,3 +89,12 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 export { registerUser };
+
+/**
+ * 
+ * TODO : console req.body
+ *        console req.files 
+ *        console response  cloundiary
+ * 
+*/
+
