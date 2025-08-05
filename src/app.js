@@ -23,5 +23,6 @@ import userRouter from "./routes/user.route.js"
 //routes declaration
 app.use("/api/v1/users", userRouter)
 
+
 // http://localhost:8000/api/v1/users/register   after users router go to the user.routes.js to find path routes after users
 export {app}

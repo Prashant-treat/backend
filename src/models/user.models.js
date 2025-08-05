@@ -69,7 +69,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 
 
 
-userSchema.methods.generateAccessToken = async function (password) {
+userSchema.methods.generateAccessToken =  function (password) {
     //async is not necessary in this case
     return jwt.sign(
         {
@@ -87,7 +87,7 @@ userSchema.methods.generateAccessToken = async function (password) {
 
 
 
-userSchema.methods.generateRefreshToken = async function (password) {
+userSchema.methods.generateRefreshToken =  function () {
     //async is not necessary in this case
     return jwt.sign(
         {
