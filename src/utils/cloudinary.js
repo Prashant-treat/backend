@@ -35,10 +35,12 @@ const getPublicIdFromUrl = (url) => {
     return publicId;
 };
 
-const deleteCloudinary = async (imageurl) => {
+const deleteCloudinary = async (imageurl, resource_type = "image") => {
     try {
         const publicId = getPublicIdFromUrl(imageurl);
-        const result = await cloudinary.uploader.destroy(publicId);
+        const result = await cloudinary.uploader.destroy(publicId, {
+            resource_type: `${resource_type}`,
+        });
         console.log("Deleted:", result); // Optional log
         return result; // result is stored here
     } catch (error) {
